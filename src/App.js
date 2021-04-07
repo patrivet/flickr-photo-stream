@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext, useContext } from "react";
 import "./App.css";
 import JSONP from "jsonp";
 
@@ -7,17 +7,29 @@ import PhotoList from "./components/PhotoList/PhotoList";
 import TagFilter from "./components/TagFilter/TagFilter";
 
 const BASE_URL =
-  "https://api.flickr.com/services/feeds/photos_public.gne?&format=json";
+  "https://api.flickr.com/services/feeds/photos_public.gne?&format=json&tags=safe,";
 const HEADERS = {
   param: "jsoncallback",
 };
+let url = BASE_URL;
+
+// App Context setup
+const AppContext = createContext();
+export const useAppContext = () => useContext(AppContext);
 
 function App() {
   const [photos, setPhotos] = useState([]);
   const [ready, setReady] = useState(false);
+  const [tags, setTags] = useState([]);
 
-  useEffect(() => {
-    JSONP(BASE_URL, HEADERS, (err, data) => {
+  // Define context
+  const context = {
+    tags,
+    setTags,
+  };
+
+  const fetchPhotos = () => {
+    JSONP(url, HEADERS, (err, data) => {
       if (err) {
         console.log(`ERROR occured fetching url =${BASE_URL}. Error =`);
         console.log(err);
@@ -26,10 +38,24 @@ function App() {
         setReady(true);
       }
     });
+  };
+
+  useEffect(() => {
+    fetchPhotos();
   }, []);
 
+  useEffect(() => {
+    // Update flickr url & fetch
+    if (tags) {
+      url += `${tags.toString()}`;
+    } else {
+      url = BASE_URL;
+    }
+    fetchPhotos();
+  }, [tags]);
+
   return (
-    <div className="App">
+    <AppContext.Provider value={context}>
       {ready && (
         <>
           <TagFilter />
@@ -37,7 +63,7 @@ function App() {
         </>
       )}
       {!ready && <div>Loading...</div>}
-    </div>
+    </AppContext.Provider>
   );
 }
 

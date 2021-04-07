@@ -1,25 +1,34 @@
 import { useState } from "react";
 import "./TagFilter.css";
 
+// Custom components
+import { useAppContext } from "../../App";
+
 const TagFilter = () => {
-  const [filterTags, setFilterTags] = useState([]);
+  // const [tags, settags] = useState([]);
   const [newTag, setNewTag] = useState("");
+  const { tags, setTags } = useAppContext();
 
   const addTag = (tagToAdd) => {
-    // check this tag isn't in list. TBD
     setNewTag(tagToAdd);
-    // clear the field - TBD
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setFilterTags((existingTags) => {
-      return [...existingTags, newTag];
-    });
+    // clear the form
+    document.getElementById("tags_form").reset();
+
+    // Only add tag if not in list.
+    // Todo : show a message if already in list
+    if (!tags.includes(newTag)) {
+      setTags((existingTags) => {
+        return [...existingTags, newTag];
+      });
+    }
   };
 
   const removeTag = (tagToRemove) => {
-    setFilterTags((existingTags) => {
+    setTags((existingTags) => {
       return existingTags.filter((tag) => tag !== tagToRemove);
     });
   };
@@ -40,7 +49,7 @@ const TagFilter = () => {
 
   return (
     <div className="tagFilter">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} id="tags_form">
         <label htmlFor="tag_input">Enter a tag to search images: </label>
         <input
           type="text"
@@ -58,8 +67,9 @@ const TagFilter = () => {
           Add
         </button>
       </form>
+      {tags.length ? <p>Displaying results for tags:-</p> : null}
       <div className="tagFilter__tags">
-        {filterTags.map((tag) => {
+        {tags.map((tag) => {
           return tagLabel(tag);
         })}
       </div>
