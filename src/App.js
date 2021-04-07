@@ -46,10 +46,9 @@ function App() {
 
   useEffect(() => {
     // Update flickr url & fetch
+    url = BASE_URL;
     if (tags) {
       url += `${tags.toString()}`;
-    } else {
-      url = BASE_URL;
     }
     fetchPhotos();
   }, [tags]);
