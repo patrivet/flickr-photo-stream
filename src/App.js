@@ -5,7 +5,7 @@ import JSONP from "jsonp";
 // Custom components
 import PhotoList from './components/PhotoList/PhotoList';
 
-const BASE_URL = 'https://api.flickr.com/services/feeds/photos_public.gne?&format=json&lang=en-us&tags=safe';
+const BASE_URL = 'https://api.flickr.com/services/feeds/photos_public.gne?&format=json';
 const HEADERS = {
   "param": "jsoncallback"
 }

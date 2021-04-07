@@ -1,0 +1,22 @@
+.photo {
+  width: 300px;
+  height: 350px;
+  border: 1px solid rgba(233,234,236,0.08);
+  border-radius: 5px;
+  padding: 10px;
+  margin: 15px;
+  background-color: #25282c;
+  overflow: scroll;
+}
+
+.photo > p, a {
+  background-color: #25282c;
+}
+
+.photo__img {
+  width: 300px;
+  height: 180px;
+  object-fit: cover;
+  position: sticky;
+  top: 0;
+}
