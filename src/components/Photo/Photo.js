@@ -8,7 +8,7 @@ const Photo = ({photo}) => {
 
   return (
     <div className="photo">
-      <a href={photo.link}><img className="photo__img" alt={photo.title} src={photo.media.m}/></a>
+      <a href={photo.link}><img className="photo__img" loading="lazy" alt={photo.title} src={photo.media.m}/></a>
       <p className="photo__title photo--link"><a href={photo.link}>{photo.title}</a> by <a href={authorUrl}>{authorName}</a></p>
       <p className="photo__description">Description: {photo.title}</p>
       <p className="photo__tags">Tags: {photo.tags.split(' ').join(", ")}</p>

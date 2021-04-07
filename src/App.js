@@ -1,14 +1,16 @@
-import { useState, useEffect } from 'react';
-import './App.css';
+import { useState, useEffect } from "react";
+import "./App.css";
 import JSONP from "jsonp";
 
 // Custom components
-import PhotoList from './components/PhotoList/PhotoList';
+import PhotoList from "./components/PhotoList/PhotoList";
+import TagFilter from "./components/TagFilter/TagFilter";
 
-const BASE_URL = 'https://api.flickr.com/services/feeds/photos_public.gne?&format=json';
+const BASE_URL =
+  "https://api.flickr.com/services/feeds/photos_public.gne?&format=json";
 const HEADERS = {
-  "param": "jsoncallback"
-}
+  param: "jsoncallback",
+};
 
 function App() {
   const [photos, setPhotos] = useState([]);
@@ -24,12 +26,16 @@ function App() {
         setReady(true);
       }
     });
-
   }, []);
 
   return (
     <div className="App">
-      {ready && <PhotoList photos={photos}/>}
+      {ready && (
+        <>
+          <TagFilter />
+          <PhotoList photos={photos} />
+        </>
+      )}
       {!ready && <div>Loading...</div>}
     </div>
   );
