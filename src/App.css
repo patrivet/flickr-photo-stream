@@ -1,5 +1,22 @@
 * {
   background-color: #151618;
   color: #a9abb3;
+  font-family: "Ubuntu Condensed", sans-serif;
+}
 
+h1 {
+  margin: 0;
+}
+
+.App__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 0;
+}
+
+.App__headerImg {
+  width: 40px;
+  height: 40px;
+  padding-right: 15px;
 }

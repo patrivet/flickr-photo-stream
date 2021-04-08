@@ -26,3 +26,11 @@
 .tagFilter__tagName {
   margin: 0 5px;
 }
+
+.tagFilter__tagLabel {
+  padding-right: 10px;
+}
+
+.tagFilter__button {
+  margin-left: 10px;
+}

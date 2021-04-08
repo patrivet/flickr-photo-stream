@@ -7,7 +7,7 @@ import PhotoList from "./components/PhotoList/PhotoList";
 import TagFilter from "./components/TagFilter/TagFilter";
 
 const BASE_URL =
-  "https://api.flickr.com/services/feeds/photos_public.gne?&format=json&tags=safe,";
+  "https://api.flickr.com/services/feeds/photos_public.gne?&format=json";
 const HEADERS = {
   param: "jsoncallback",
 };
@@ -48,13 +48,21 @@ function App() {
     // Update flickr url & fetch
     url = BASE_URL;
     if (tags) {
-      url += `${tags.toString()}`;
+      url += `&tags=${tags.toString()}`;
     }
     fetchPhotos();
   }, [tags]);
 
   return (
     <AppContext.Provider value={context}>
+      <div className="App__header">
+        <img
+          src="/Flickr-logo.svg"
+          alt="flickr-logo"
+          className="App__headerImg"
+        />
+        <h1>Flickr public photos feed</h1>
+      </div>
       {ready && (
         <>
           <TagFilter />

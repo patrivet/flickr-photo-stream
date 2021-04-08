@@ -5,7 +5,6 @@ import "./TagFilter.css";
 import { useAppContext } from "../../App";
 
 const TagFilter = () => {
-  // const [tags, settags] = useState([]);
   const [newTag, setNewTag] = useState("");
   const { tags, setTags } = useAppContext();
 
@@ -50,7 +49,9 @@ const TagFilter = () => {
   return (
     <div className="tagFilter">
       <form onSubmit={handleSubmit} id="tags_form">
-        <label htmlFor="tag_input">Enter a tag to search images: </label>
+        <label className="tagFilter__tagLabel" htmlFor="tag_input">
+          Enter a tag to search images:{" "}
+        </label>
         <input
           type="text"
           id="tag_input"
@@ -63,7 +64,7 @@ const TagFilter = () => {
           autoComplete="off"
         />
 
-        <button type="submit" width="auto">
+        <button className="tagFilter__button" type="submit" width="auto">
           Add
         </button>
       </form>
