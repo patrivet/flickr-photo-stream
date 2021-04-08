@@ -66,7 +66,7 @@ function App() {
           <PhotoList photos={photos} />
         </>
       )}
-      {!ready && <div>Loading...</div>}
+      {!ready && <div className="App__loading">Loading...</div>}
     </AppContext.Provider>
   );
 }

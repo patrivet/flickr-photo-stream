@@ -13,3 +13,7 @@ h1 {
 .secondary-text {
   color: var(--secondary-font-color);
 }
+
+.App__loading {
+  text-align: center;
+}
