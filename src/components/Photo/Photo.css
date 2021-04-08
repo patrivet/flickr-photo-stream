@@ -12,9 +12,7 @@
   box-shadow: var(--card-box-shadow);
 }
 
-.photo > div,
-p,
-a {
+.photo :is(a, p, div) {
   background-color: var(--card-background-color);
 }
 

@@ -71,7 +71,9 @@ const TagFilter = () => {
           Add
         </button>
       </form>
-      {tags.length ? <p>Displaying results for tags:-</p> : null}
+      {tags.length ? (
+        <p className="secondary-text">Displaying results for tags:-</p>
+      ) : null}
       <div className="tagFilter__tags">
         {tags.map((tag) => {
           return tagLabel(tag);
