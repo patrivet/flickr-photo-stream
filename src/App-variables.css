@@ -1,0 +1,17 @@
+/* Define global variable colors */
+:root {
+  --background-color: #151618;
+  --font-color: #a9abb3;
+  --secondary-font-color: #a9abb3;
+  --card-background-color: #25282c;
+  --card-box-shadow: none;
+}
+
+/* Light theme colors */
+body.light-theme {
+  --background-color: #e9eaec;
+  --font-color: #151618;
+  --secondary-font-color: #686e78;
+  --card-background-color: white;
+  --card-box-shadow: 0 8px 24px 0 rgb(0 0 0 / 8%);
+}

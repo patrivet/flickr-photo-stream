@@ -1,3 +1,5 @@
+@import "../../App-variables.css";
+
 .photo {
   width: 300px;
   height: 350px;
@@ -5,14 +7,15 @@
   border-radius: 5px;
   padding: 10px;
   margin: 15px;
-  background-color: #25282c;
+  background-color: var(--card-background-color);
   overflow: scroll;
+  box-shadow: var(--card-box-shadow);
 }
 
 .photo > div,
 p,
 a {
-  background-color: #25282c;
+  background-color: var(--card-background-color);
 }
 
 .photo__title {

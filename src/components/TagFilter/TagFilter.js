@@ -49,7 +49,10 @@ const TagFilter = () => {
   return (
     <div className="tagFilter">
       <form onSubmit={handleSubmit} id="tags_form">
-        <label className="tagFilter__tagLabel" htmlFor="tag_input">
+        <label
+          className="tagFilter__tagLabel secondary-text"
+          htmlFor="tag_input"
+        >
           Enter a tag to search images:{" "}
         </label>
         <input

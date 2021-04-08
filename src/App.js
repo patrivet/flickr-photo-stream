@@ -5,6 +5,7 @@ import JSONP from "jsonp";
 // Custom components
 import PhotoList from "./components/PhotoList/PhotoList";
 import TagFilter from "./components/TagFilter/TagFilter";
+import Header from "./components/Header/Header";
 
 const BASE_URL =
   "https://api.flickr.com/services/feeds/photos_public.gne?&format=json";
@@ -21,11 +22,14 @@ function App() {
   const [photos, setPhotos] = useState([]);
   const [ready, setReady] = useState(false);
   const [tags, setTags] = useState([]);
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
 
   // Define context
   const context = {
     tags,
     setTags,
+    isDarkTheme,
+    setIsDarkTheme,
   };
 
   const fetchPhotos = () => {
@@ -55,14 +59,7 @@ function App() {
 
   return (
     <AppContext.Provider value={context}>
-      <div className="App__header">
-        <img
-          src="/Flickr-logo.svg"
-          alt="flickr-logo"
-          className="App__headerImg"
-        />
-        <h1>Flickr public photos feed</h1>
-      </div>
+      <Header />
       {ready && (
         <>
           <TagFilter />
