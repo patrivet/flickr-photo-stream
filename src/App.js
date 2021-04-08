@@ -6,6 +6,7 @@ import JSONP from "jsonp";
 import PhotoList from "./components/PhotoList/PhotoList";
 import TagFilter from "./components/TagFilter/TagFilter";
 import Header from "./components/Header/Header";
+import Spinner from "./components/Spinner/Spinner";
 
 const BASE_URL =
   "https://api.flickr.com/services/feeds/photos_public.gne?&format=json";
@@ -66,7 +67,7 @@ function App() {
           <PhotoList photos={photos} />
         </>
       )}
-      {!ready && <div className="App__loading">Loading...</div>}
+      {!ready && <Spinner />}
     </AppContext.Provider>
   );
 }
