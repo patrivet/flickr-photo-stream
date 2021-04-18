@@ -36,7 +36,7 @@ function App() {
   const fetchPhotos = () => {
     JSONP(url, HEADERS, (err, data) => {
       if (err) {
-        console.log(`ERROR occured fetching url =${BASE_URL}. Error =`);
+        console.log(`ERROR occured fetching url =${url}. Error =`);
         console.log(err);
       } else {
         setPhotos(data.items);
