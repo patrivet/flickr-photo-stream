@@ -7,8 +7,12 @@ const FLICKR_BASE_URL = "https://www.flickr.com/photos"; // fix me - move to con
 const Photo = ({ photo }) => {
   const authorUrl = `${FLICKR_BASE_URL}/${photo.author_id}`;
   const authorName = photo.author.split('"')[1];
-  const { setFavPhotos } = useAppContext();
-  const [isFav, setIsFav] = useState();
+  const { setFavPhotos, favPhotos } = useAppContext();
+  const checkIsFav = () =>
+    // check if this photo is in the favs array.
+    favPhotos.filter((nextPhoto) => nextPhoto.link === photo.link).length;
+
+  const [isFav, setIsFav] = useState(checkIsFav);
 
   const addAsFav = (photo) => {
     photo.favourite = true;
@@ -27,7 +31,7 @@ const Photo = ({ photo }) => {
         (photoMember) => photoMember.link === photo.link
       );
       if (photoIndex < 0) {
-        console.log(existingFavs);
+        // todo - what to do here? throw an exception?
         return existingFavs;
       }
       copy.splice(photoIndex, 1);

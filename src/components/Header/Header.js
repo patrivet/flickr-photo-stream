@@ -12,20 +12,20 @@ const Header = () => {
     setIsDarkTheme((currentTheme) => !currentTheme);
   };
 
+  const showingFavs = window.location.pathname.indexOf("favourites") !== -1;
+  const linkTo = showingFavs ? "/" : "/favourites";
+  const buttonText = showingFavs ? "Hide Favourites" : "Show Favourites";
+
   return (
     <>
-      <div className="App__header">
-        <img
-          src="/Flickr-logo.svg"
-          alt="flickr-logo"
-          className="App__headerImg"
-        />
+      <div className="header">
+        <img src="/Flickr-logo.svg" alt="flickr-logo" className="header__img" />
         <h1>Flickr public photos feed</h1>
       </div>
-      <Link to="/favourites">
-        <button>Favs</button>
-      </Link>
-      <div className="App__themeMode" onClick={toggleTheme}>
+      <div className="header__icons" onClick={toggleTheme}>
+        <Link to={linkTo}>
+          <button>{buttonText}</button>
+        </Link>
         <img
           src={`${isDarkTheme ? "light" : "dark"}Theme.svg`}
           alt="theme-icon"

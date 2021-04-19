@@ -1,17 +1,17 @@
-.App__header {
+.header {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 15px 0;
 }
 
-.App__headerImg {
+.header__img {
   width: 40px;
   height: 40px;
   padding-right: 15px;
 }
 
-.App__themeMode {
+.header__icons {
   position: absolute;
   top: 0;
   right: 0;
