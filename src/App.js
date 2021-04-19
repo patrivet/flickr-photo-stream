@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext, useContext } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import JSONP from "jsonp";
 
@@ -21,6 +22,7 @@ export const useAppContext = () => useContext(AppContext);
 
 function App() {
   const [photos, setPhotos] = useState([]);
+  const [favPhotos, setFavPhotos] = useState([]);
   const [ready, setReady] = useState(false);
   const [tags, setTags] = useState([]);
   const [isDarkTheme, setIsDarkTheme] = useState(true);
@@ -31,6 +33,8 @@ function App() {
     setTags,
     isDarkTheme,
     setIsDarkTheme,
+    setFavPhotos,
+    favPhotos,
   };
 
   const fetchPhotos = () => {
@@ -59,16 +63,36 @@ function App() {
   }, [tags]);
 
   return (
-    <AppContext.Provider value={context}>
+    <BrowserRouter>
+      <AppContext.Provider value={context}>
       <Header />
-      {ready && (
-        <>
-          <TagFilter />
-          <PhotoList photos={photos} />
-        </>
-      )}
-      {!ready && <Spinner />}
-    </AppContext.Provider>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <>
+                {ready && (
+                  <>
+                    <TagFilter />
+                    <PhotoList photos={photos} />
+                  </>
+                )}
+                {!ready && <Spinner />}
+              </>
+            )}
+          />
+          <Route
+            path="/favourites"
+            render={() => (
+              <>
+                <PhotoList photos={favPhotos} />
+              </>
+            )}
+          />
+        </Switch>
+      </AppContext.Provider>
+    </BrowserRouter>
   );
 }
 

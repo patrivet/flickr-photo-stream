@@ -1,4 +1,5 @@
 import "./Header.css";
+import { Link } from "react-router-dom";
 
 // Custom components
 import { useAppContext } from "../../App";
@@ -21,6 +22,9 @@ const Header = () => {
         />
         <h1>Flickr public photos feed</h1>
       </div>
+      <Link to="/favourites">
+        <button>Favs</button>
+      </Link>
       <div className="App__themeMode" onClick={toggleTheme}>
         <img
           src={`${isDarkTheme ? "light" : "dark"}Theme.svg`}
