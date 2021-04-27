@@ -10,6 +10,7 @@ An app displaying the latest photo uploads from Flickr's public feed.
 ## Enhancements:
 - [ ] Try out a feed from the Flickr API
 - [x] Ability to bookmark a photo, and view in bookmarks tab. 
+- [ ] Persist and restore bookmarks e.g. in local storage 
 - [ ] Make responsive
 
 ## Live app:
