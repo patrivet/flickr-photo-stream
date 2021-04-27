@@ -8,8 +8,9 @@ An app displaying the latest photo uploads from Flickr's public feed.
  3. Run app ```npm start```
 
 ## Enhancements:
-- Try out a feed from the Flickr API
-- Ability to bookmark a photo, and view in bookmarks tab. 
+- [ ] Try out a feed from the Flickr API
+- [x] Ability to bookmark a photo, and view in bookmarks tab. 
+- [ ] Make responsive
 
 ## Live app:
 See the app hosted [here](https://flickr-photo-stream.netlify.app/)
